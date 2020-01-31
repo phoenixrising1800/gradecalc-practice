@@ -191,8 +191,16 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="20dp"
-            android:paddingBottom="50dp"
+            android:paddingBottom="20dp"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/finalCalculation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="50dp"
+            android:textAlignment="center"
+            android:textSize="30sp" />
 
     </LinearLayout>
 </ScrollView>
