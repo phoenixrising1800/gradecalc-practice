@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="info">Test Header</string>
+    <string name="prompt0">Individual Assignment points earned: </string>
+    <string name="prompt1">Individual Assignment points possible: </string>
+    <string name="prompt2">Team Project points earned: </string>
+    <string name="prompt3">Team Project points possible: </string>
+    <string name="prompt4">Midterm Exam points earned: </string>
+    <string name="prompt5">Midterm Exam points possible: </string>
+    <string name="prompt6">Final Exam points earned: </string>
+    <string name="prompt7">Final Exam points possible: </string>
+    <string name="button">Calculate</string>
+    <string name="finalOutput">Your course grade calculates to </string>
+</resources>
