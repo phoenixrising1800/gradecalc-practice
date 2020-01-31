@@ -65,10 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
             // calculate
             String weightedGrade = calculateWeightedGrade(inputValues);
-            finalCalculation.setText(weightedGrade);
+            if (Double.valueOf(weightedGrade) < 0 || Double.valueOf(weightedGrade) > 100)
+                throw new IllegalArgumentException();
+            char gradingScheme = getGradingScheme(Double.parseDouble(weightedGrade));
+            String output = gradingScheme + ": " + weightedGrade;
+            finalCalculation.setText(output);
 
         } catch (IllegalArgumentException e) {
-            finalCalculation.setText("Please input all values");
+            finalCalculation.setText("Please input all values correctly.");
         } catch (Exception e) {
             e.printStackTrace();
             finalCalculation.setText(e.getMessage());
@@ -90,10 +94,20 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private String calculateWeightedGrade(ArrayList<Double> values) {
-        return "Success";
+        return "99";
     }
 
     private char getGradingScheme(double grade) {
-        return 'A';
+        if (grade >= 90)
+            return 'A';
+        else if (grade >= 80 && grade < 90)
+            return 'B';
+        else if (grade >= 70 && grade < 80)
+            return 'C';
+        else if (grade >= 60 && grade < 70)
+            return 'D';
+        else if (grade < 60)
+            return 'F';
+        return 'x';
     }
 }
