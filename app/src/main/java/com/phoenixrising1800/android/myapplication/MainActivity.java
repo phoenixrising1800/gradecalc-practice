@@ -4,9 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView finalCalculation;
+    private EditText userText;
+    private final double INDIV_WEIGHT = 0.2;
+    private final double TEAMPROJ_WEIGHT = 0.3;
+    private final double MIDTERM_WEIGHT = 0.3;
+    private final double FINAL_WEIGHT = 0.2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +22,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        Toast.makeText(this, "Successfully calculated.", Toast.LENGTH_LONG).show();
+        try {
+            // init textbox for final calculation output
+            finalCalculation = findViewById(R.id.finalCalculation);
+
+            // Get input values from user
+            EditText current =  findViewById(R.id.indivPointsEarned);
+            String name = current.getText().toString();
+            // calculate
+            System.out.println(name);
+            finalCalculation.setText(name);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private double calculateWeightedGrade() {
+        return 0;
+    }
+
+    private char getGradingScheme(double grade) {
+        return 'A';
     }
 }

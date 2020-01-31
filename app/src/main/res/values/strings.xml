@@ -10,5 +10,5 @@
     <string name="prompt6">Final Exam points earned: </string>
     <string name="prompt7">Final Exam points possible: </string>
     <string name="button">Calculate</string>
-    <string name="finalOutput">Your course grade calculates to </string>
+    <string name="finalOutput">Your course grade calculates to: </string>
 </resources>
