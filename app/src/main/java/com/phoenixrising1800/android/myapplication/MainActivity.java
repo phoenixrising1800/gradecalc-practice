@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private TextView finalCalculation;
     private EditText userText;
@@ -22,24 +24,73 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+        // init textbox for final calculation output
+        finalCalculation = findViewById(R.id.finalCalculation);
+
         try {
-            // init textbox for final calculation output
-            finalCalculation = findViewById(R.id.finalCalculation);
+            ArrayList<Double> inputValues = new ArrayList<Double>();
 
-            // Get input values from user
+            // Get input values from user, compile values
+
             EditText current =  findViewById(R.id.indivPointsEarned);
-            String name = current.getText().toString();
-            // calculate
-            System.out.println(name);
-            finalCalculation.setText(name);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
 
+            current = findViewById(R.id.indivPointsPossible);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+            current = findViewById(R.id.projPointsEarned);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+            current = findViewById(R.id.projPointsPossible);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+            current = findViewById(R.id.midtermPointsEarned);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+            current = findViewById(R.id.midtermPointsPossible);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+            current = findViewById(R.id.finalPointsEarned);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+            current = findViewById(R.id.finalPointsPossible);
+            inputValues.add(Double.parseDouble(receiveUserText(current)));
+
+
+            // TODO: can remove?
+            // error, not all values found input
+            if (inputValues.isEmpty() || inputValues.size() != 8) {
+                throw new Exception("Please input all values");
+            }
+
+            // calculate
+            String weightedGrade = calculateWeightedGrade(inputValues);
+            finalCalculation.setText(weightedGrade);
+
+        } catch (IllegalArgumentException e) {
+            finalCalculation.setText("Please input all values");
         } catch (Exception e) {
             e.printStackTrace();
+            finalCalculation.setText(e.getMessage());
+        } finally {
         }
     }
 
-    private double calculateWeightedGrade() {
-        return 0;
+    private String receiveUserText(EditText current) {
+        if (current.getText().toString().isEmpty()) {
+            return "Please input all values.";
+        }
+        return current.getText().toString();
+    }
+
+    /**
+     * Get list of values found from user input and calculate the weighted grade as a String
+     * to be output.
+     * @param values
+     * @return
+     */
+    private String calculateWeightedGrade(ArrayList<Double> values) {
+        return "Success";
     }
 
     private char getGradingScheme(double grade) {
